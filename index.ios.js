@@ -9,13 +9,16 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Image
 } from 'react-native';
 
 class LaudatoSi extends Component {
   render() {
+    const crossPicture = require('./images/cross.jpg');
     return (
       <View style={styles.container}>
+        <Image source={crossPicture} style={{width: 100, height: 100}}/>
         <Text style={styles.welcome}>
           Welcome to React Native!
         </Text>
