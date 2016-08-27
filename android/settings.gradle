@@ -1,0 +1,3 @@
+rootProject.name = 'LaudatoSi'
+
+include ':app'
