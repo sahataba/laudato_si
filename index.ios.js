@@ -27,8 +27,8 @@ class LaudatoSi extends Component {
       <Navigator
         initialRoute={routes[0]}
         renderScene={(route, navigator) => {
-          return <View style={styles.container}>
-            <SinSubmit />
+          if(route.index === 0) {
+            return <View style={styles.container}>
             <Image source={crossPicture} style={{width: 100, height: 100}}/>
             <Text style={styles.welcome}>
               Welcome to {route.title}
@@ -41,6 +41,9 @@ class LaudatoSi extends Component {
               Cmd+D or shake for dev menu
             </Text>
           </View>
+          }
+          else return <View style={styles.container}><SinSubmit /><Text style={styles.welcome}>
+          bbvkvkhvkvjlhvljhvljhvjhvjhvjhvjhvjhvjhvjhvjhvjhvjhvjhvjhvb</Text></View>
         }}
         navigationBar = {
           <Navigator.NavigationBar
