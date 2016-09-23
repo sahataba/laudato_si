@@ -22,6 +22,10 @@ let questionsByCategory = observable([
   }
 ]);
 
+const Question = observer(({question}) => {
+  return <Text>Question: {(question != null)? question.question:"a"}</Text>
+})
+
 export default observer(class SinSubmit extends Component {
   static get defaultProps() {
     return {
@@ -46,7 +50,12 @@ export default observer(class SinSubmit extends Component {
         </TouchableHighlight>
         <ListView
           dataSource={this.state.dataSource}
-          renderRow={(rowData) => <Text>{rowData.category}</Text>}
+          renderRow={(rowData) => 
+            <View>
+            <Text>{rowData.category}</Text>
+            <Question question = {rowData.questions[0]}/>
+            </View>
+          }
         />
       </View>
     )
