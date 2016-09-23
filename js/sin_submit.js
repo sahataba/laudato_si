@@ -15,7 +15,8 @@ let questionsByCategory = observable([
       {
         "question":"What do you do to reduce your water use?",
         "answers":[
-          {"answer":"Don't boil more water than necessary when making tea", "weight":1, "marked":false}
+          {"answer":"Don't boil more water than necessary when making tea", "weight":1, "marked":false},
+          {"answer":"Take Navy or Military showers or use the bathtub", "weight":5, "marked":false}
         ]
       }
     ]
@@ -25,7 +26,7 @@ let questionsByCategory = observable([
 const Question = observer(({question}) => {
   return  <View>
             <Text>Question: {(question != null)? question.question:"a"}</Text>
-            <Switch value={false}/>
+            {question.answers.map((a) => <View><Text>{a.answer}</Text><Switch value={a.marked}/></View>)}
           </View>
 })
 
