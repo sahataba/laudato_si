@@ -11,22 +11,27 @@ import {
   Text,
   View,
   Image,
-  Navigator
+  Navigator,
+  TouchableHighlight
 } from 'react-native';
 import SinSubmit from './js/sin_submit.js';
 
 class LaudatoSi extends Component {
   render() {
     const crossPicture = require('./images/cross.jpg');
+    const routes = [
+      {title: 'First Scene', index: 0},
+      {title: 'Second Scene', index: 1},
+    ];
     return (
       <Navigator
-        initialRoute={{ title: 'My Initial Scene', index: 0 }}
+        initialRoute={routes[0]}
         renderScene={(route, navigator) => {
           return <View style={styles.container}>
             <SinSubmit />
             <Image source={crossPicture} style={{width: 100, height: 100}}/>
             <Text style={styles.welcome}>
-              Welcome to React Native!
+              Welcome to {route.title}
             </Text>
             <Text style={styles.instructions}>
               To get started, edit index.ios.js
@@ -43,7 +48,10 @@ class LaudatoSi extends Component {
               LeftButton: (route, navigator, index, navState) =>
                 { return (<Text>Cancel</Text>); },
               RightButton: (route, navigator, index, navState) =>
-                { return (<Text>Done</Text>); },
+                { return (
+                  <TouchableHighlight onPress={() => navigator.push(routes[1])}>
+                    <Text>Done</Text>
+                  </TouchableHighlight>); },
               Title: (route, navigator, index, navState) =>
                 { return (<Text>Awesome Nav Bar</Text>); },
             }}
