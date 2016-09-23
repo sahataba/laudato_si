@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ListView, Text, TouchableHighlight } from 'react-native';
+import { View, ListView, Text, Switch, TouchableHighlight } from 'react-native';
 import {observable} from 'mobx';
 import {observer} from 'mobx-react/native';
 
@@ -23,7 +23,10 @@ let questionsByCategory = observable([
 ]);
 
 const Question = observer(({question}) => {
-  return <Text>Question: {(question != null)? question.question:"a"}</Text>
+  return  <View>
+            <Text>Question: {(question != null)? question.question:"a"}</Text>
+            <Switch value={false}/>
+          </View>
 })
 
 export default observer(class SinSubmit extends Component {
