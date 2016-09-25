@@ -55,7 +55,7 @@ let questionsByCategory = observable([
 const Question = observer(({question}) => {
   return  <View>
             <Text>{sin.total} Question: {(question != null)? question.question:"a"}</Text>
-            {question.answers.map((a) => <View><Text>{a.answer}</Text><Switch value={a.marked} onValueChange={(value) => a.marked = !a.marked}/></View>)}
+            {question.answers.map((a) => <View style={{flex: 1, flexDirection: 'row'}}><Switch value={a.marked} onValueChange={(value) => a.marked = !a.marked}/><Text>{a.answer}</Text></View>)}
           </View>
 })
 
