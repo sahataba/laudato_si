@@ -12,7 +12,7 @@ var sin = observable({
     total: function() {
       let answers = [].concat.apply([],[].concat.apply([], questionsByCategory.slice().map(c => c.questions.slice().map(q => q.answers.slice()))));
       let scores = answers.filter(a => a.marked === false).map(a => a.weight);
-      return scores.reduce(function(previousValue, currentValue){return currentValue + previousValue;});
+      return scores.reduce(function(previousValue, currentValue){return currentValue + previousValue;}, 0);
     }
 });
 
@@ -54,8 +54,8 @@ let questionsByCategory = observable([
 
 const Question = observer(({question}) => {
   return  <View>
-            <Text>Question: {(question != null)? question.question:"a"}</Text>
-            {question.answers.map((a) => <View><Text>{a.answer}</Text><Switch value={a.marked}/></View>)}
+            <Text>{sin.total} Question: {(question != null)? question.question:"a"}</Text>
+            {question.answers.map((a) => <View><Text>{a.answer}</Text><Switch value={a.marked} onValueChange={(value) => a.marked = !a.marked}/></View>)}
           </View>
 })
 
