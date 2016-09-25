@@ -86,7 +86,7 @@ export default observer(class SinSubmit extends Component {
           renderRow={(rowData) => 
             <View>
             <Text>{rowData.category}</Text>
-            <Question question = {rowData.questions[0]}/>
+            {rowData.questions.map(question => <Question question = {question}/>)}
             </View>
           }
         />
